@@ -82,7 +82,6 @@ const NAV = [
     label: "Our School",
     children: [
       { label: "About Us",            href: "#" },
-      { label: "Our Campuses",        href: "#" },
       { label: "Leadership Team",     href: "#" },
       { label: "Accreditations",      href: "#" },
     ],
@@ -118,7 +117,6 @@ const NAV = [
     label: "Contact Us",
     children: [
       { label: "Enquire Now",         href: "#" },
-      { label: "Find a Campus",       href: "#" },
       { label: "Careers",             href: "#" },
     ],
   },
@@ -159,13 +157,6 @@ const FEATURES = [
   { emoji:"🏫", title:"Appeals to a Broad-Based Community", desc:"A non-denominational and co-educational approach makes our schools accessible and welcoming to all segments of the community." },
   { emoji:"✨", title:"A Vibrant Alternative to Traditional Schooling", desc:"With its unique philosophy, each school is exciting in its own right — its fresh, modern approach stands out boldly against traditional offerings." },
   { emoji:"⭐", title:"Strong Reputation for Excellence", desc:"Each school is committed to maintaining a superlative reputation synonymous with academic, cultural and sporting excellence." },
-];
-
-// ─── CAMPUSES ────────────────────────────────────────────────────────────────
-const CAMPUSES = [
-  { name: "Northcliff Campus",   address: "Cnr Davidson & 13th Ave, Northcliff",        phone: "011 123 4567" },
-  { name: "Midrand Campus",      address: "Blue Hills Estate, 5 Mopani Rd, Midrand",    phone: "011 234 5678" },
-  { name: "Pretoria East Campus",address: "Garsfontein Rd, Pretoria East, 0057",        phone: "012 345 6789" },
 ];
 
 // ═══════════════════════════════════════════════════════════════════
@@ -952,7 +943,7 @@ const OpenDaysSection = () => (
             fontSize:"1rem", color:"rgba(255,255,255,0.7)",
             lineHeight:1.8, marginBottom:"2rem", maxWidth:"440px",
           }}>
-            Explore our beautiful campuses, see us in action and discover how our academic curriculum and purpose-built facilities can help maximise your child's fullest potential.
+            Experience our vibrant school community, see us in action and discover how our academic curriculum and purpose-built facilities can help maximise your child's fullest potential.
           </p>
           <p style={{
             fontSize:"0.9rem", color:C.accent, fontWeight:700,
@@ -970,51 +961,6 @@ const OpenDaysSection = () => (
                 borderRadius:"50%", flexShrink:0,
               }}/>
               {d}
-            </div>
-          ))}
-        </div>
-
-        {/* Campus cards */}
-        <div style={{display:"flex", flexDirection:"column", gap:"1rem"}}>
-          {CAMPUSES.map(campus=>(
-            <div key={campus.name} style={{
-              background:"rgba(255,255,255,0.07)",
-              border:"1px solid rgba(255,255,255,0.12)",
-              borderLeft:`4px solid ${C.accent}`,
-              padding:"1.5rem 1.8rem",
-              display:"flex", justifyContent:"space-between", alignItems:"center",
-              transition:"background 0.2s",
-              cursor:"pointer",
-            }}
-            onMouseEnter={e=>e.currentTarget.style.background="rgba(255,255,255,0.12)"}
-            onMouseLeave={e=>e.currentTarget.style.background="rgba(255,255,255,0.07)"}
-            >
-              <div>
-                <div style={{fontWeight:700, fontSize:"0.95rem", marginBottom:"0.3rem"}}>{campus.name}</div>
-                <div style={{
-                  display:"flex", alignItems:"center", gap:"0.35rem",
-                  color:"rgba(255,255,255,0.55)", fontSize:"0.8rem",
-                }}>
-                  <MapPinIcon/> {campus.address}
-                </div>
-                <div style={{
-                  display:"flex", alignItems:"center", gap:"0.35rem",
-                  color:C.accent, fontSize:"0.8rem", marginTop:"0.2rem",
-                }}>
-                  <PhoneIcon/> {campus.phone}
-                </div>
-              </div>
-              <a href="#" style={{
-                background:C.accent, color:C.dark,
-                padding:"0.55rem 1.2rem", borderRadius:"2px",
-                textDecoration:"none", fontWeight:700,
-                fontSize:"0.75rem", letterSpacing:"0.08em",
-                textTransform:"uppercase", whiteSpace:"nowrap",
-                flexShrink:0, transition:"background 0.2s",
-              }}
-              onMouseEnter={e=>e.currentTarget.style.background=C.accentHov}
-              onMouseLeave={e=>e.currentTarget.style.background=C.accent}
-              >Register</a>
             </div>
           ))}
         </div>
@@ -1266,7 +1212,7 @@ const Footer = ({ onEnquireClick }) => (
             </span>
           </div>
           <p style={{fontSize:"0.85rem", lineHeight:1.8, marginBottom:"1.5rem", maxWidth:"280px"}}>
-            Providing a holistic, world-class education to students from 3 months to Grade 12 across multiple campuses.
+            Providing a holistic, world-class education to students from 3 months to Grade 12.
           </p>
           <div style={{display:"flex", gap:"0.75rem"}}>
             {[<FacebookIcon/>, <InstagramIcon/>].map((icon, i) => (
@@ -1291,7 +1237,7 @@ const Footer = ({ onEnquireClick }) => (
           <h4 style={{color:"#fff", fontWeight:700, fontSize:"0.82rem", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"1.2rem"}}>
             Useful Links
           </h4>
-          {["About Us","Our Campuses","Curriculum","Open Days","Careers"].map(l=>(
+          {["About Us","Curriculum","Open Days","Careers"].map(l=>(
             <a key={l} href="#" style={{
               display:"block", color:"rgba(255,255,255,0.6)",
               textDecoration:"none", fontSize:"0.85rem",
@@ -1326,24 +1272,6 @@ const Footer = ({ onEnquireClick }) => (
             onMouseEnter={e=>e.currentTarget.style.color=C.accent}
             onMouseLeave={e=>e.currentTarget.style.color="rgba(255,255,255,0.6)"}
             >{l}</a>
-          ))}
-        </div>
-
-        {/* Contact / Addresses */}
-        <div>
-          <h4 style={{color:"#fff", fontWeight:700, fontSize:"0.82rem", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:"1.2rem"}}>
-            Our Campuses
-          </h4>
-          {CAMPUSES.map(c => (
-            <div key={c.name} style={{marginBottom:"1.2rem"}}>
-              <div style={{color:C.accent, fontWeight:700, fontSize:"0.82rem", marginBottom:"0.2rem"}}>{c.name}</div>
-              <div style={{fontSize:"0.82rem", lineHeight:1.6, display:"flex", gap:"0.3rem"}}>
-                <MapPinIcon/> {c.address}
-              </div>
-              <div style={{fontSize:"0.82rem", marginTop:"0.2rem", display:"flex", gap:"0.3rem"}}>
-                <PhoneIcon/> {c.phone}
-              </div>
-            </div>
           ))}
         </div>
       </div>
