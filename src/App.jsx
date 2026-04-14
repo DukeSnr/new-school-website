@@ -61,18 +61,18 @@ const InstagramIcon = () => (
 
 // ─── COLOUR TOKENS (change these to restyle the whole site) ──────────────────
 const C = {
-  primary:   "#1a3a5c",   // deep navy — main brand colour
-  accent:    "#c8a85a",   // gold — CTA buttons, highlights
-  accentHov: "#b8962a",
-  light:     "#f5f2ed",   // warm off-white background
-  dark:      "#111827",   // near-black for dark sections
-  text:      "#2d2d2d",
-  muted:     "#6b7280",
+  primary:   "#5B2E8A",   // purple brand colour from the logo
+  accent:    "#F7931E",   // orange CTA and highlights
+  accentHov: "#d77a18",
+  light:     "#FAF3EA",   // warm off-white background
+  dark:      "#1B1330",   // very dark purple for contrast
+  text:      "#2E2550",
+  muted:     "#7A6F95",
   white:     "#ffffff",
-  topBar:    "#1a3a5c",   // utility bar background
+  topBar:    "#5B2E8A",   // utility bar background
   navBg:     "#ffffff",   // main nav background
-  navText:   "#1a3a5c",
-  dropBg:    "#1a3a5c",
+  navText:   "#5B2E8A",
+  dropBg:    "#5B2E8A",
   dropText:  "#ffffff",
 };
 
@@ -127,21 +127,21 @@ const NAV = [
 // ─── HERO SLIDES ─────────────────────────────────────────────────────────────
 const SLIDES = [
   {
-    bg: "linear-gradient(135deg, #1a3a5c 0%, #2d5f8a 50%, #1a3a5c 100%)",
+    bg: "linear-gradient(135deg, #5B2E8A 0%, #F7931E 50%, #5B2E8A 100%)",
     emoji: "🎓",
     tag: "Premium Education",
     title: "Inspiring Excellence\nin Every Child",
     sub: "Providing a holistic education to students from 3 months to Grade 12, grounded in academic rigour, creativity and character.",
   },
   {
-    bg: "linear-gradient(135deg, #2d5235 0%, #3d6b45 50%, #1e3a21 100%)",
+    bg: "linear-gradient(135deg, #5B2E8A 0%, #41A458 50%, #5B2E8A 100%)",
     emoji: "🌟",
     tag: "Academic Achievement",
     title: "Where Curiosity\nBecomes Mastery",
     sub: "Our vibrant educators are handpicked for their specialist knowledge and passion for shaping the enquiring minds of tomorrow.",
   },
   {
-    bg: "linear-gradient(135deg, #3d2a1a 0%, #7a4f2d 50%, #2d1e0f 100%)",
+    bg: "linear-gradient(135deg, #F7931E 0%, #5B2E8A 50%, #41A458 100%)",
     emoji: "🏆",
     tag: "Arts & Culture",
     title: "Unlocking Talent\nBuilding Character",
@@ -864,7 +864,7 @@ const VideoSection = () => {
           onClick={() => setPlaying(true)}
           style={{
             position:"relative", borderRadius:"4px", overflow:"hidden",
-            background:`linear-gradient(135deg, ${C.primary} 0%, #2d5f8a 100%)`,
+            background:`linear-gradient(135deg, ${C.primary} 0%, #7d5ee3 100%)`,
             aspectRatio:"16/9",
             cursor:"pointer",
             boxShadow:"0 30px 80px rgba(0,0,0,0.2)",
@@ -1435,8 +1435,8 @@ export default function App() {
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Serif+4:wght@300;400;600&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #f5f2ed; }
-        ::-webkit-scrollbar-thumb { background: #1a3a5c; border-radius: 2px; }
+        ::-webkit-scrollbar-track { background: #faf3ea; }
+        ::-webkit-scrollbar-thumb { background: #5B2E8A; border-radius: 2px; }
         html { scroll-behavior: smooth; }
 
         /* sticky header wrapper */
