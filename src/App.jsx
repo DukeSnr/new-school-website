@@ -698,7 +698,7 @@ const AboutSection = () => (
   <section style={{
     background:C.white, padding:"5rem 2rem",
   }}>
-    <div style={{maxWidth:"1600px", margin:"0 auto", display:"grid", gridTemplateColumns:"1fr 1fr", gap:"5rem", alignItems:"center"}}>
+    <div style={{maxWidth:"1280px", margin:"0 auto", display:"grid", gridTemplateColumns:"1fr 1fr", gap:"5rem", alignItems:"center"}}>
       <div>
         <div style={{
           display:"inline-block",
@@ -718,13 +718,13 @@ const AboutSection = () => (
           lineHeight:1.15, letterSpacing:"-0.02em",
           marginBottom:"1.5rem",
         }}>
-          A Holistic Education<br/>from Foundation to Matric
+          WHY CHOOSE US?
         </h2>
         <p style={{fontSize:"1rem", color:C.muted, lineHeight:1.85, marginBottom:"1.25rem"}}>
-          We provide a holistic education to students from 3 months old to Grade 12. The three key pillars of our educational approach are based on lateral thinking, comprehension and the innovative application of skills and concepts.
+          Our Kindergarden Offers a Naturing, Safe and Stimulating Environment Where Qualified Teachers Provide High-Quality Education.
         </p>
         <p style={{fontSize:"1rem", color:C.muted, lineHeight:1.85, marginBottom:"2rem"}}>
-          Our vibrant teachers are carefully selected for their specialist knowledge, excellent qualifications and outstanding rapport with students. They are passionate and motivated, striving daily to shape enquiring minds and develop young talent.
+          Individualized Attention, and a Balanced, Play-Based Curriculum. We focus on Holstic Development, Fostering Social,Emotional and Academic Growth to Help Every Child Thrive.
         </p>
         <a href="#" style={{
           display:"inline-flex", alignItems:"center", gap:"0.5rem",

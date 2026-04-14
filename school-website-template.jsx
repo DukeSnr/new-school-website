@@ -529,34 +529,6 @@ const AboutSection = () => (
         onMouseLeave={e=>e.currentTarget.style.color=C.primary}
         >Discover Our Story →</a>
       </div>
-
-      {/* Stats block */}
-      <div>
-        <div style={{
-          display:"grid", gridTemplateColumns:"1fr 1fr", gap:"1.5rem",
-        }}>
-          {[
-            { n:"1,200+", l:"Students Enrolled" },
-            { n:"98%",    l:"Parent Satisfaction" },
-            { n:"25yr",   l:"Years of Excellence" },
-            { n:"1:8",    l:"Educator Ratio" },
-          ].map(s => (
-            <div key={s.l} style={{
-              background:C.light,
-              border:`1px solid rgba(0,0,0,0.06)`,
-              borderTop:`3px solid ${C.accent}`,
-              padding:"2rem 1.5rem",
-              textAlign:"center",
-            }}>
-              <div style={{
-                fontFamily:"'Playfair Display', Georgia, serif",
-                fontSize:"2.5rem", fontWeight:700, color:C.primary,
-                lineHeight:1, marginBottom:"0.5rem",
-              }}>{s.n}</div>
-              <div style={{fontSize:"0.78rem", color:C.muted, letterSpacing:"0.06em", textTransform:"uppercase", fontWeight:600}}>{s.l}</div>
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   </section>
@@ -669,7 +641,7 @@ const OpenDaysSection = () => (
             fontWeight:700, lineHeight:1.15,
             letterSpacing:"-0.02em", marginBottom:"1.5rem",
           }}>
-            Discover Our Schools<br/>First-Hand
+            Discover Our School<br/>First-Hand
           </h2>
           <p style={{
             fontSize:"1rem", color:"rgba(255,255,255,0.7)",
