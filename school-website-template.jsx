@@ -59,18 +59,18 @@ const InstagramIcon = () => (
 
 // ─── COLOUR TOKENS (change these to restyle the whole site) ──────────────────
 const C = {
-  primary:   "#1a3a5c",   // deep navy — main brand colour
-  accent:    "#c8a85a",   // gold — CTA buttons, highlights
-  accentHov: "#b8962a",
-  light:     "#f5f2ed",   // warm off-white background
-  dark:      "#111827",   // near-black for dark sections
-  text:      "#2d2d2d",
-  muted:     "#6b7280",
+  primary:   "#5B2E8A",   // purple brand colour from the logo
+  accent:    "#F7931E",   // orange CTA and highlights
+  accentHov: "#d77a18",
+  light:     "#FAF3EA",   // warm off-white background
+  dark:      "#1B1330",   // very dark purple for contrast
+  text:      "#2E2550",
+  muted:     "#7A6F95",
   white:     "#ffffff",
-  topBar:    "#1a3a5c",   // utility bar background
+  topBar:    "#5B2E8A",   // utility bar background
   navBg:     "#ffffff",   // main nav background
-  navText:   "#1a3a5c",
-  dropBg:    "#1a3a5c",
+  navText:   "#5B2E8A",
+  dropBg:    "#5B2E8A",
   dropText:  "#ffffff",
 };
 
@@ -116,38 +116,26 @@ const NAV = [
 // ─── HERO SLIDES ─────────────────────────────────────────────────────────────
 const SLIDES = [
   {
-    bg: "linear-gradient(135deg, #1a3a5c 0%, #2d5f8a 50%, #1a3a5c 100%)",
+    bg: "linear-gradient(135deg, #5B2E8A 0%, #F7931E 50%, #5B2E8A 100%)",
     emoji: "🎓",
     tag: "Premium Education",
     title: "Inspiring Excellence\nin Every Child",
     sub: "Providing a holistic education to students from 18 months to 5 years old, grounded in academic rigour, creativity and character.",
   },
   {
-    bg: "linear-gradient(135deg, #2d5235 0%, #3d6b45 50%, #1e3a21 100%)",
+    bg: "linear-gradient(135deg, #5B2E8A 0%, #41A458 50%, #5B2E8A 100%)",
     emoji: "🌟",
     tag: "Academic Achievement",
     title: "Where Curiosity\nBecomes Mastery",
     sub: "Our vibrant educators are handpicked for their specialist knowledge and passion for shaping the enquiring minds of tomorrow.",
   },
   {
-    bg: "linear-gradient(135deg, #3d2a1a 0%, #7a4f2d 50%, #2d1e0f 100%)",
+    bg: "linear-gradient(135deg, #F7931E 0%, #5B2E8A 50%, #41A458 100%)",
     emoji: "🏆",
     tag: "Arts & Culture",
     title: "Unlocking Talent\nBuilding Character",
     sub: "From robotics to performing arts, our purpose-built facilities give every student the platform to discover and pursue their passion.",
   },
-];
-
-// ─── FEATURES ────────────────────────────────────────────────────────────────
-const FEATURES = [
-  { emoji:"🏅", title:"Selects the Best of the Best", desc:"Dynamic and passionate teachers and coaches are handpicked for their specialist knowledge and offered at all levels and in all aspects of the school." },
-  { emoji:"💛", title:"Respects the Well-Being of Children", desc:"Our schools create numerous opportunities for students to become well-rounded, happy individuals who simply love school and their school experience." },
-  { emoji:"🎨", title:"A Highly Creative Environment", desc:"Students are encouraged to uncover their latent talents and excel with passion and enthusiasm in the creative and performing arts." },
-  { emoji:"🌍", title:"Internationally Recognised Qualifications", desc:"Our schools ensure all students are adequately and resourcefully equipped to confront life's challenges in a globally competitive world." },
-  { emoji:"🤝", title:"Success in the Heart of the Community", desc:"Each school is individually developed and designed to complement its surrounding environment and engage meaningfully with the local community." },
-  { emoji:"🏫", title:"Appeals to a Broad-Based Community", desc:"A non-denominational and co-educational approach makes our schools accessible and welcoming to all segments of the community." },
-  { emoji:"✨", title:"A Vibrant Alternative to Traditional Schooling", desc:"With its unique philosophy, each school is exciting in its own right — its fresh, modern approach stands out boldly against traditional offerings." },
-  { emoji:"⭐", title:"Strong Reputation for Excellence", desc:"Each school is committed to maintaining a superlative reputation synonymous with academic, cultural and sporting excellence." },
 ];
 
 // ═══════════════════════════════════════════════════════════════════
@@ -402,24 +390,7 @@ const MainNav = ({ scrolled }) => {
 // HERO SLIDER
 // ═══════════════════════════════════════════════════════════════════
 const HeroSlider = () => {
-  const [current, setCurrent] = useState(0);
-  const [animating, setAnimating] = useState(false);
-
-  const go = (dir) => {
-    if (animating) return;
-    setAnimating(true);
-    setTimeout(() => {
-      setCurrent(c => (c + dir + SLIDES.length) % SLIDES.length);
-      setAnimating(false);
-    }, 300);
-  };
-
-  useEffect(() => {
-    const t = setInterval(() => go(1), 6000);
-    return () => clearInterval(t);
-  }, []);
-
-  const slide = SLIDES[current];
+  const slide = SLIDES[0];
 
   return (
     <div style={{
@@ -448,9 +419,6 @@ const HeroSlider = () => {
       <div style={{
         maxWidth:"1280px", margin:"0 auto", padding:"0 4rem",
         width:"100%",
-        opacity: animating ? 0 : 1,
-        transform: animating ? "translateY(20px)" : "translateY(0)",
-        transition:"all 0.5s cubic-bezier(0.16,1,0.3,1)",
       }}>
         <div style={{maxWidth:"680px"}}>
           <div style={{
@@ -512,46 +480,6 @@ const HeroSlider = () => {
           </div>
         </div>
       </div>
-
-      {/* Prev / Next */}
-      <button onClick={()=>go(-1)} style={{
-        position:"absolute", left:"1.5rem", top:"50%", transform:"translateY(-50%)",
-        background:"rgba(255,255,255,0.15)", backdropFilter:"blur(8px)",
-        border:"1px solid rgba(255,255,255,0.25)", color:"#fff",
-        width:"48px", height:"48px", borderRadius:"50%",
-        display:"flex", alignItems:"center", justifyContent:"center",
-        cursor:"pointer", transition:"all 0.2s",
-      }}
-      onMouseEnter={e=>e.currentTarget.style.background="rgba(255,255,255,0.3)"}
-      onMouseLeave={e=>e.currentTarget.style.background="rgba(255,255,255,0.15)"}
-      ><ChevronLeftIcon/></button>
-      <button onClick={()=>go(1)} style={{
-        position:"absolute", right:"1.5rem", top:"50%", transform:"translateY(-50%)",
-        background:"rgba(255,255,255,0.15)", backdropFilter:"blur(8px)",
-        border:"1px solid rgba(255,255,255,0.25)", color:"#fff",
-        width:"48px", height:"48px", borderRadius:"50%",
-        display:"flex", alignItems:"center", justifyContent:"center",
-        cursor:"pointer", transition:"all 0.2s",
-      }}
-      onMouseEnter={e=>e.currentTarget.style.background="rgba(255,255,255,0.3)"}
-      onMouseLeave={e=>e.currentTarget.style.background="rgba(255,255,255,0.15)"}
-      ><ChevronRightIcon/></button>
-
-      {/* Dot indicators */}
-      <div style={{
-        position:"absolute", bottom:"2rem", left:"50%", transform:"translateX(-50%)",
-        display:"flex", gap:"0.6rem",
-      }}>
-        {SLIDES.map((_,i) => (
-          <button key={i} onClick={()=>setCurrent(i)} style={{
-            width: i===current ? "28px" : "8px",
-            height:"8px", borderRadius:"4px",
-            background: i===current ? C.accent : "rgba(255,255,255,0.4)",
-            border:"none", cursor:"pointer", padding:0,
-            transition:"all 0.3s",
-          }}/>
-        ))}
-      </div>
     </div>
   );
 };
@@ -586,11 +514,10 @@ const AboutSection = () => (
           WHY CHOOSE US?
         </h2>
         <p style={{fontSize:"1rem", color:C.muted, lineHeight:1.85, marginBottom:"1.25rem"}}>
-          We provide a holistic education to students from 3 months old to Grade 12. The three key pillars of our educational approach are based on lateral thinking, comprehension and the innovative application of skills and concepts.
+          Our Kindergarden Offers a Naturing, Safe and Stimulating Environment Where Qualified Teachers Provide High-Quality Education.
         </p>
         <p style={{fontSize:"1rem", color:C.muted, lineHeight:1.85, marginBottom:"2rem"}}>
-          Our vibrant teachers are carefully selected for their specialist knowledge, excellent qualifications and outstanding rapport with students. They are passionate and motivated, striving daily to shape enquiring minds and develop young talent.
-        </p>
+          Individualized Attention, and a Balanced, Play-Based Curriculum. We focus on Holstic Development, Fostering Social,Emotional and Academic Growth to Help Every Child Thrive.</p>
         <a href="#" style={{
           display:"inline-flex", alignItems:"center", gap:"0.5rem",
           color:C.primary, fontWeight:700, fontSize:"0.85rem",
@@ -828,116 +755,6 @@ const QuoteSection = () => (
   </section>
 );
 
-// ═══════════════════════════════════════════════════════════════════
-// FEATURES CAROUSEL
-// ═══════════════════════════════════════════════════════════════════
-const FeaturesCarousel = () => {
-  const [current, setCurrent] = useState(0);
-  const perPage = 3;
-  const total = FEATURES.length;
-  const maxStart = total - perPage;
-
-  const prev = () => setCurrent(c => Math.max(0, c - 1));
-  const next = () => setCurrent(c => Math.min(maxStart, c + 1));
-  const visible = FEATURES.slice(current, current + perPage);
-
-  return (
-    <section style={{background:C.white, padding:"5rem 2rem"}}>
-      <div style={{maxWidth:"1280px", margin:"0 auto"}}>
-        <div style={{
-          display:"flex", justifyContent:"space-between", alignItems:"flex-end",
-          marginBottom:"3rem", flexWrap:"wrap", gap:"1rem",
-        }}>
-          <div>
-            <div style={{
-              fontSize:"0.72rem", fontWeight:700, letterSpacing:"0.2em",
-              textTransform:"uppercase", color:C.accent, marginBottom:"0.8rem",
-            }}>Why Choose Us</div>
-            <h2 style={{
-              fontFamily:"'Playfair Display', Georgia, serif",
-              fontSize:"clamp(1.8rem,3vw,2.5rem)",
-              fontWeight:700, color:C.primary,
-              lineHeight:1.15, letterSpacing:"-0.02em",
-            }}>What Sets Us Apart</h2>
-          </div>
-          <div style={{display:"flex", gap:"0.75rem"}}>
-            <button onClick={prev} disabled={current===0} style={{
-              width:"44px", height:"44px", borderRadius:"2px",
-              background: current===0 ? C.light : C.primary,
-              border:`1px solid ${current===0 ? "rgba(0,0,0,0.1)" : C.primary}`,
-              color: current===0 ? C.muted : "#fff",
-              cursor: current===0 ? "default" : "pointer",
-              display:"flex", alignItems:"center", justifyContent:"center",
-              transition:"all 0.2s",
-            }}><ChevronLeftIcon/></button>
-            <button onClick={next} disabled={current>=maxStart} style={{
-              width:"44px", height:"44px", borderRadius:"2px",
-              background: current>=maxStart ? C.light : C.primary,
-              border:`1px solid ${current>=maxStart ? "rgba(0,0,0,0.1)" : C.primary}`,
-              color: current>=maxStart ? C.muted : "#fff",
-              cursor: current>=maxStart ? "default" : "pointer",
-              display:"flex", alignItems:"center", justifyContent:"center",
-              transition:"all 0.2s",
-            }}><ChevronRightIcon/></button>
-          </div>
-        </div>
-
-        <div style={{
-          display:"grid",
-          gridTemplateColumns:`repeat(${perPage}, 1fr)`,
-          gap:"1.5rem",
-          transition:"all 0.4s",
-        }}>
-          {visible.map((f, i) => (
-            <div key={f.title} style={{
-              border:`1px solid rgba(0,0,0,0.08)`,
-              borderTop:`4px solid ${C.accent}`,
-              padding:"2rem",
-              background:C.white,
-              transition:"all 0.25s",
-              cursor:"default",
-            }}
-            onMouseEnter={e=>{e.currentTarget.style.boxShadow="0 12px 40px rgba(0,0,0,0.1)";e.currentTarget.style.transform="translateY(-4px)"}}
-            onMouseLeave={e=>{e.currentTarget.style.boxShadow="none";e.currentTarget.style.transform="translateY(0)"}}
-            >
-              {/* Photo placeholder */}
-              <div style={{
-                height:"180px",
-                background:`linear-gradient(135deg, ${C.primary}22 0%, ${C.primary}08 100%)`,
-                borderRadius:"2px",
-                display:"flex", alignItems:"center", justifyContent:"center",
-                fontSize:"4rem", marginBottom:"1.5rem",
-              }}>{f.emoji}</div>
-              <h3 style={{
-                fontFamily:"'Playfair Display', Georgia, serif",
-                fontSize:"1.1rem", fontWeight:700,
-                color:C.primary, marginBottom:"0.75rem",
-                lineHeight:1.3,
-              }}>{f.title}</h3>
-              <p style={{
-                fontSize:"0.875rem", color:C.muted,
-                lineHeight:1.75,
-              }}>{f.desc}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Dot indicators */}
-        <div style={{display:"flex", justifyContent:"center", gap:"0.5rem", marginTop:"2rem"}}>
-          {Array.from({length: maxStart+1}).map((_,i) => (
-            <button key={i} onClick={()=>setCurrent(i)} style={{
-              width: i===current ? "24px" : "8px",
-              height:"8px", borderRadius:"4px",
-              background: i===current ? C.primary : "rgba(0,0,0,0.15)",
-              border:"none", cursor:"pointer", padding:0,
-              transition:"all 0.3s",
-            }}/>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
 
 // ═══════════════════════════════════════════════════════════════════
 // PARTNERSHIP BANNER
@@ -971,7 +788,7 @@ const PartnershipSection = () => (
           color:C.primary, marginBottom:"0.5rem",
         }}>An Internationally Affiliated School</h3>
         <p style={{fontSize:"0.9rem", color:C.muted, lineHeight:1.7}}>
-          YourSchool is a proud member of a leading global premium schools group operating across multiple continents, educating students across a global network of schools.
+          Dr. ML Academy is a proud member of a leading global premium schools group operating across multiple continents, educating students across a global network of schools.
         </p>
       </div>
       <a href="#" style={{
@@ -1008,7 +825,7 @@ const Footer = () => (
             <span style={{
               fontFamily:"'Playfair Display', Georgia, serif",
               fontSize:"1.5rem", fontWeight:700, color:"#fff",
-            }}>YourSchool</span>
+            }}>Dr. ML Academy</span>
             <br/>
             <span style={{fontSize:"0.65rem", color:C.accent, letterSpacing:"0.2em", textTransform:"uppercase"}}>
               House of Excellence

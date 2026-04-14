@@ -597,24 +597,7 @@ const EnquiryForm = ({ isOpen, onClose }) => {
 // HERO SLIDER
 // ═══════════════════════════════════════════════════════════════════
 const HeroSlider = ({ onEnquireClick }) => {
-  const [current, setCurrent] = useState(0);
-  const [animating, setAnimating] = useState(false);
-
-  const go = (dir) => {
-    if (animating) return;
-    setAnimating(true);
-    setTimeout(() => {
-      setCurrent(c => (c + dir + SLIDES.length) % SLIDES.length);
-      setAnimating(false);
-    }, 300);
-  };
-
-  useEffect(() => {
-    const t = setInterval(() => go(1), 6000);
-    return () => clearInterval(t);
-  }, []);
-
-  const slide = SLIDES[current];
+  const slide = SLIDES[0];
 
   return (
     <div style={{
@@ -643,9 +626,6 @@ const HeroSlider = ({ onEnquireClick }) => {
       <div style={{
         maxWidth:"1600px", margin:"0 auto", padding:"0 2rem",
         width:"100%",
-        opacity: animating ? 0 : 1,
-        transform: animating ? "translateY(20px)" : "translateY(0)",
-        transition:"all 0.5s cubic-bezier(0.16,1,0.3,1)",
       }}>
         <div style={{maxWidth:"680px"}}>
           <div style={{
@@ -706,46 +686,6 @@ const HeroSlider = ({ onEnquireClick }) => {
             >Book an Open Day</a>
           </div>
         </div>
-      </div>
-
-      {/* Prev / Next */}
-      <button onClick={()=>go(-1)} style={{
-        position:"absolute", left:"1.5rem", top:"50%", transform:"translateY(-50%)",
-        background:"rgba(255,255,255,0.15)", backdropFilter:"blur(8px)",
-        border:"1px solid rgba(255,255,255,0.25)", color:"#fff",
-        width:"48px", height:"48px", borderRadius:"50%",
-        display:"flex", alignItems:"center", justifyContent:"center",
-        cursor:"pointer", transition:"all 0.2s",
-      }}
-      onMouseEnter={e=>e.currentTarget.style.background="rgba(255,255,255,0.3)"}
-      onMouseLeave={e=>e.currentTarget.style.background="rgba(255,255,255,0.15)"}
-      ><ChevronLeftIcon/></button>
-      <button onClick={()=>go(1)} style={{
-        position:"absolute", right:"1.5rem", top:"50%", transform:"translateY(-50%)",
-        background:"rgba(255,255,255,0.15)", backdropFilter:"blur(8px)",
-        border:"1px solid rgba(255,255,255,0.25)", color:"#fff",
-        width:"48px", height:"48px", borderRadius:"50%",
-        display:"flex", alignItems:"center", justifyContent:"center",
-        cursor:"pointer", transition:"all 0.2s",
-      }}
-      onMouseEnter={e=>e.currentTarget.style.background="rgba(255,255,255,0.3)"}
-      onMouseLeave={e=>e.currentTarget.style.background="rgba(255,255,255,0.15)"}
-      ><ChevronRightIcon/></button>
-
-      {/* Dot indicators */}
-      <div style={{
-        position:"absolute", bottom:"2rem", left:"50%", transform:"translateX(-50%)",
-        display:"flex", gap:"0.6rem",
-      }}>
-        {SLIDES.map((_,i) => (
-          <button key={i} onClick={()=>setCurrent(i)} style={{
-            width: i===current ? "28px" : "8px",
-            height:"8px", borderRadius:"4px",
-            background: i===current ? C.accent : "rgba(255,255,255,0.4)",
-            border:"none", cursor:"pointer", padding:0,
-            transition:"all 0.3s",
-          }}/>
-        ))}
       </div>
     </div>
   );
